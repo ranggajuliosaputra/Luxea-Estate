@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "bunshin": {
+      "source": "AThevon/genjutsu",
+      "sourceType": "github",
+      "skillPath": "skills/bunshin/SKILL.md",
+      "computedHash": "953aa3c4f22b2e780cad2d0da078b4494071e4b097e1c6fe2f0fdeff1dac506a"
+    },
+    "cast": {
+      "source": "AThevon/genjutsu",
+      "sourceType": "github",
+      "skillPath": "skills/cast/SKILL.md",
+      "computedHash": "1f2809a8d33398ceb6f080ebbdcbc8b6a3b2e0e6e32921ff32de243d66a84a40"
+    },
     "design-dna": {
       "source": "zanwei/design-dna",
       "sourceType": "github",
@@ -60,6 +72,12 @@
       "sourceType": "github",
       "skillPath": "skills/motion-design/SKILL.md",
       "computedHash": "9fcf9130cc46ee8fd1d8e09a9263347a9d76efbcbfa46591cc4cefaf19bbb453"
+    },
+    "paint": {
+      "source": "AThevon/genjutsu",
+      "sourceType": "github",
+      "skillPath": "skills/paint/SKILL.md",
+      "computedHash": "46526b102af530fcf4cf32c983437c85605b174410f801a8894a6855f1b14771"
     },
     "threejs-animation": {
       "source": "CloudAI-X/threejs-skills",
