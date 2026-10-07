@@ -23,6 +23,18 @@ npm run start                # http://localhost:3000
 
 Use another port: `npm run dev -- -p 4000`.
 
+### Windows: "Turbopack is not supported on this platform … only WASM bindings"
+
+This means Next.js couldn't load its native compiler (`@next/swc-win32-x64-msvc`).
+
+- **Quick workaround:** use webpack instead of Turbopack, with `npm run dev:webpack` and `npm run build:webpack`.
+- **Permanent fix:**
+  1. Close any running dev server.
+  2. Delete the `node_modules` folder, but keep `package-lock.json`.
+  3. Run `npm install` again.
+  4. If it still fails, install the [Microsoft Visual C++ Redistributable (x64)](https://aka.ms/vs/17/release/vc_redist.x64.exe), restart the terminal, and try again.
+- **Also check:** use 64-bit Node.js 20.9+ (`node -p "process.arch"` should print `x64`). Avoid running from a OneDrive-synced folder, because sync or antivirus software can lock the `.node` binary.
+
 Other scripts: `npm run typecheck`.
 
 ## Environment variables (`.env.local`)

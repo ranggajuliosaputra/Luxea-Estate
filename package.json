@@ -2,10 +2,12 @@
   "name": "luxea-estate",
   "version": "0.1.0",
   "private": true,
-  "description": "Luxea Estate — investasi tanah & properti transparan di Bali",
+  "description": "Luxea Estate \u2014 investasi tanah & properti transparan di Bali",
   "scripts": {
     "dev": "next dev",
+    "dev:webpack": "next dev --webpack",
     "build": "next build",
+    "build:webpack": "next build --webpack",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
