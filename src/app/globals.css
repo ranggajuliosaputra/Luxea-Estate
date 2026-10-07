@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Luxea Estate · Design DNA tokens
+   Pasir (sand), zaitun (olive), arang (charcoal).
+   Sans tegas untuk struktur, serif miring untuk satu kata aksen.
+------------------------------------------------------------------- */
+@theme {
+  --color-sand-50: #f7f3ec;
+  --color-sand-100: #efe8dc;
+  --color-sand-200: #e6dfcf;
+  --color-sand-300: #d8cdb6;
+  --color-sand-400: #cfc4ac;
+  --color-paper: #fbf9f5;
+  --color-olive-200: #d6dbc0;
+  --color-olive-300: #a7b675;
+  --color-olive-400: #b8c48c;
+  --color-olive-600: #5b6b3a;
+  --color-olive-700: #4b5730;
+  --color-olive-800: #3f4a27;
+  --color-charcoal: #23241f;
+  --color-charcoal-soft: #2c2d27;
+  --color-ink-2: #5e5a51;
+  --color-ink-3: #66604f;
+  --color-ink-dark-2: #cfc7b6;
+  --color-ink-dark-3: #b9b09e;
+  --color-itr: #b88a2a;
+  --color-itr-bg: #f1e2b8;
+  --color-itr-ink: #4a3a0e;
+  --color-signal: #a8452c;
+
+  --radius-chip: 999px;
+  --radius-tile: 20px;
+  --radius-card: 26px;
+  --radius-panel: 32px;
+
+  --shadow-lift: 0 28px 56px -28px rgb(35 36 31 / 0.38);
+  --shadow-glass: 0 30px 60px -40px rgb(35 36 31 / 0.5);
+
+  --ease-lux: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --text-display: clamp(2.75rem, 6.2vw, 5.75rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.035em;
+  --text-h2: clamp(2.25rem, 4.4vw, 4rem);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.03em;
+}
+
+@theme inline {
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-sand-100);
+  }
+  body {
+    @apply bg-sand-100 font-sans text-charcoal antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-olive-600);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-olive-300);
+    color: var(--color-charcoal);
+  }
+}
+
+@layer components {
+  .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .eyebrow {
+    @apply text-xs uppercase tracking-[0.14em] text-ink-3;
+  }
+  .glass {
+    background: rgb(255 255 255 / 0.58);
+    border: 1px solid rgb(255 255 255 / 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: var(--shadow-glass);
+  }
+  .container-lux {
+    @apply mx-auto w-full max-w-[1360px];
+  }
+  .section-pad {
+    @apply px-4 sm:px-6 lg:px-10;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Live pulse dot (used next to ITR and "live" labels) */
+@keyframes lx-pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+.lx-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 9999px;
+  background: currentColor;
+}
+.lx-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: lx-pulse 1.8s ease-out infinite;
+}
+
+/* Custom cursor (Genjutsu) — hidden on touch devices */
+.lx-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  pointer-events: none;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border-radius: 9999px;
+  border: 1px solid rgb(35 36 31 / 0.5);
+  backdrop-filter: blur(2px) saturate(1.4);
+  -webkit-backdrop-filter: blur(2px) saturate(1.4);
+  transition: width 0.35s var(--ease-lux), height 0.35s var(--ease-lux), margin 0.35s var(--ease-lux), background 0.35s;
+}
+.lx-cursor[data-hover="true"] {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgb(167 182 117 / 0.25);
+  border-color: rgb(91 107 58 / 0.6);
+}
+@media (hover: none), (pointer: coarse) {
+  .lx-cursor { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .lx-dot::after { animation: none; }
+  .lx-cursor { display: none; }
+}
